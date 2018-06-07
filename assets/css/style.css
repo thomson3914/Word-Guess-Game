@@ -1,0 +1,50 @@
+body {
+    color: #050001;
+    background-color: #f1bbd6;
+    font-size: 28px;
+}
+
+
+.background {
+    background-color: rgb(240, 116, 188);
+    background-image: url("../images/terrazzo.png");
+    background-size: cover;
+    background-blend-mode: multiply;
+}
+
+#new-game-button {
+    outline: none;
+    border: none;
+    cursor: pointer;
+    display: block;
+    background-color: #92c6ea;
+    position:relative;
+    font-size: 22px;
+    font-weight: bold;
+    color: #5f5f5e;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    padding: 25px;
+    border-radius: 20px;
+    box-shadow: 0 6px #5f5f5e;
+}
+
+#new-game-button:hover {
+    box-shadow: 0 4px #5f5f5e;
+    top: 2px;
+}
+
+#new-game-button:active {
+    box-shadow: 0 0 #5f5f5e;
+    top: 6px;
+}    
+
+#placeholder-section {
+    background-color: #ec98d0;
+}
+
+#placeholders {
+    letter-spacing: 6px;
+    font-size: 40px;
+}
+
