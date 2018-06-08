@@ -9,13 +9,14 @@ var $imageGuess = document.getElementById('image-guess');
 
 //create variables for game
 var wordBank = ['boston', 'dachshund', 'pomeranian', 'schnauzer', 'shih tzu', 'yorkie'];
-var imageBank = ["../images/boston.jpg", "../images/dachshund.jpg", "../images/pomeranian.jpg", "../images/schnauzer.jpg", "../images/shihtzu.jpg", "../images/yorkie.jpg,"];
+var imageBank = ["assets/images/boston.jpg", "assets/images/dachshund.jpg", "assets/images/pom.jpg", "assets/images/schnauzer.jpg", "assets/images/shihtzu.jpg", "assets/images/yorkie.jpg"];
+
 var wins = 0;
 var losses = 0;
 var guessesLeft = 8;
 var gameRunning = false;
 var pickedWord = '';
-var pickedImage = [];
+var pickedImage = '';
 var pickedWordPlaceholderArr = [];
 var guessedLetterBank = [];
 var incorrectLetterBank = [];
@@ -28,26 +29,29 @@ function newGame() {
     guessedLetterBank = [];
     incorrectLetterBank = [];
     pickedWordPlaceholderArr = [];
-
+    console.log(wordBank.length);
+    var index = Math.floor(Math.random() * wordBank.length); 
+    
     //pick a new word
-    pickedWord = wordBank[Math.floor(Math.random() * wordBank.length)];
+    pickedWord = wordBank[index];
+    pickedImage = imageBank[index];
 
     console.log("pickedWord: " + pickedWord);
 
     // Create placeholder out of new pickedWord
     for (var i  = 0; i < pickedWord.length; i++) {
         if (pickedWord[i] === ' ') {
-            pickedWordPlaceholderArr.push(' ');
+            pickedWordPlaceholderArr.push(' ')
         } else {
             pickedWordPlaceholderArr.push('_');
         }
     }
 
-    pickedWord [i] = pickedImage [i];
-
+    console.log("pickedImage: " + pickedImage);
+    $("#image-guess").attr("src", pickedImage);        
 
     // Write all new game info to DOM 
-    $imageGuess.textContent = pickedImage;   
+  
     $guessesLeft.textContent = guessesLeft;
     $placeholders.textContent = pickedWordPlaceholderArr.join('');
     $guessedLetters.textContent = incorrectLetterBank;

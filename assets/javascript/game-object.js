@@ -5,16 +5,18 @@ var $guessedLetters = document.getElementById('guessed-letters');
 var $guessesLeft = document.getElementById('guesses-left');
 var $wins = document.getElementById('wins');
 var $losses = document.getElementById('losses');
+var $imageGuess = document.getElementById('image-guess');
 
 // create object variables
 var game = {
-    wordBank: ['morkie', 'labradoodle', 'maltipoo', 'cavapoo', 'shorkie', 'teddybear', 'schnoodle'],
-    imageBank: ["../images/"]
+    wordBank = ['boston', 'dachshund', 'pomeranian', 'schnauzer', 'shih tzu', 'yorkie'],
+    imageBank = ["../images/boston.jpg, ../images/dachshund.jpg, ../images/pomeranian.jpg, ../images/schnauzer.jpg, ../images/shihtzu.jpg, ../images/yorkie.jpg,"],
     wins: 0,
     losses: 0,
     guessesLeft: 8,
     gameRunning: false,
     pickedWord: '',
+    pickedImage = '',
     pickedWordPlaceholderArr: [],
     guessedLetterBank: [],
     incorrectLetterBank: [], 
@@ -27,9 +29,12 @@ var game = {
         this.guessedLetterBank = [];
         this.incorrectLetterBank = [];
         this.pickedWordPlaceholderArr = []; 
+        this.index = Math.floor(Math.random() * this.wordBank.length);
 
-        //pick a new word
-        this.pickedWord = this.wordBank[Math.floor(Math.random() * this.wordBank.length)];
+        //pick a new word and image
+        this.pickedWord = this.wordBank[index];
+        this.pickedImage = this.imageBank[index];
+
 
         // Create placeholder out of new pickedWord
         console.log("this.pickedWord" + this.pickedWord);
@@ -40,6 +45,9 @@ var game = {
                 this.pickedWordPlaceholderArr.push('_');
             }
         }
+
+        console.log("this.pickedImage: " + this.pickedImage);
+        $("#image-guess").attr("src", this.pickedImage);   
 
         // Write all new game info to DOM
         $guessesLeft.textContent = this.guessesLeft;
